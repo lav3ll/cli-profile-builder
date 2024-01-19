@@ -1,0 +1,19 @@
+{
+  "name": "cli-profile-builder",
+  "version": "1.0.0",
+  "description": "CLI-based Node.js app for generating a clean and professional HTML team profile",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "inquirer": "^6.3.1",
+    "jest": "^29.7.0"
+  }
+}
