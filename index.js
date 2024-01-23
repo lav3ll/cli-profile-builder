@@ -159,11 +159,10 @@ function askManager() {
 function askRecurring() {
   inquirer.prompt(recurringQuestions).then((answers) => {
     if (answers.teamMemType === "I don't want to add any more team members") {
-      console.log("Team Members:", teamMembers);
+      writeToFile("index.html", render(teamMembers));
     } else {
       if (answers.teamMemType === "Engineer") {
         inquirer.prompt(engineerQuestions).then((engineerAnswers) => {
-          console.log("Engineer Answers:", engineerAnswers);
           const engineer = new Engineer(
             answers.memName,
             answers.memId,
@@ -175,7 +174,6 @@ function askRecurring() {
         });
       } else if (answers.teamMemType === "Intern") {
         inquirer.prompt(internQuestions).then((internAnswers) => {
-          console.log("Intern Answers:", internAnswers);
           const intern = new Intern(
             answers.memName,
             answers.memId,
@@ -188,6 +186,12 @@ function askRecurring() {
       }
     }
   });
+}
+
+function writeToFile(fileName, content) {
+  fs.writeFile(fileName, content, (err) =>
+    err ? console.log(err) : console.log("Success")
+  );
 }
 
 // Start the process by asking manager-related questions
